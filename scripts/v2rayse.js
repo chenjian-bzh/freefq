@@ -2,6 +2,8 @@ const fs = require("fs");
 const YAML = require("js-yaml");
 
 const { writeFile } = fs.promises;
+const writeYaml = (filename, obj) =>
+  writeFile(filename, YAML.dump(obj));
 
 async function fetch_rss() {
   const response = await fetch(`https://www.cfmem.com/feeds/posts/default?alt=rss`);
@@ -20,12 +22,14 @@ async function fetch_yaml(link) {
   const data = await response.text();
   const yaml = YAML.load(data);
   const { proxies } = yaml;
-  return writeFile("./proxies/v2rayse.yaml", YAML.dump({ proxies }))
+  return proxies;
 }
 
-fetch_yaml(`https://oss.v2rayse.com/proxies/data/2023-03-25/VAAlRUn.yaml`);
 
-;(async () => {
+; (async () => {
   const links = await fetch_rss();
   console.log(links);
+  const [latest] = links;
+  const proxies = await fetch_yaml(latest);
+  writeYaml("./proxies/v2rayse.yaml", { proxies })
 })();
