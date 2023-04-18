@@ -1,0 +1,15 @@
+{
+  "name": "freefq",
+  "version": "1.0.0",
+  "description": "Update Hourly.",
+  "main": "main.js",
+  "scripts": {
+    "build": "./run.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  }
+}
