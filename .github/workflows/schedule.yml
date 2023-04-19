@@ -1,0 +1,57 @@
+name: Generate Rules for Clash
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set variables
+        shell: bash
+        run: |
+          echo "RELEASE_NAME=Released on $(date +%Y.%m.%d-%H:%M)" >> $GITHUB_ENV
+          echo "TAG_NAME=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+
+      - name: Move files to publish directory
+        run: |
+          git clone https://github.com/blackmatrix7/ios_rule_script.git /tmp/ios_rule_script
+          mkdir -p publish/proxies
+          mv /tmp/ios_rule_script/rule/Clash publish/rules
+          sed -i -e 's|## 分类|# Clash Rules|g' publish/rules/README.md
+          sed -i -e 's|https://github.com/blackmatrix7/ios_rule_script/tree/master/rule/Clash/|./|g' publish/rules/README.md
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: |
+          npm ci
+          npm run build
+
+      - name: Release and upload assets
+        uses: softprops/action-gh-release@v0.1.6
+        with:
+          name: ${{ env.RELEASE_NAME }}
+          tag_name: ${{ env.TAG_NAME }}
+          draft: false
+          prerelease: false
+          files: |
+            ./publish/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Git push assets to "release" branch
+        run: |
+          cd publish || exit 1
+          git init
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b release
+          git add .
+          git commit -m "${{ env.RELEASE_NAME }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f origin release
