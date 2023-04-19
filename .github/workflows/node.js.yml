@@ -28,4 +28,4 @@ jobs:
         npm run build
         git add .
         git commit -am "update by github action"
-        git push || exit 0
+        git push

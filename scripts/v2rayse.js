@@ -1,5 +1,9 @@
+#!/usr/bin/env node
+
 const fs = require("fs");
 const YAML = require("js-yaml");
+
+console.log(1);
 
 const { writeFile } = fs.promises;
 const writeYaml = (filename, obj) =>
@@ -31,5 +35,5 @@ async function fetch_yaml(link) {
   console.log(links);
   const [latest] = links;
   const proxies = await fetch_yaml(latest);
-  writeYaml("./proxies/v2rayse.yaml", { proxies })
+  await writeYaml("./proxies/v2rayse.yaml", { proxies })
 })();

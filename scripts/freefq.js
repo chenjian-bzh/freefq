@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // https://github.com/freefq/free
 // https://raw.fastgit.org/freefq/free/master/v2
 
@@ -18,7 +20,7 @@ function parse_link(link) {
 
 const map = {
   vmess(data) {
-    console.log(data)
+    // console.log(data)
   }
 }
 
