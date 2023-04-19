@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { writeYaml } = require('../lib/util');
+const { readYaml, writeYaml } = require('../lib/util');
 
 async function fetch_rss() {
   const response = await fetch(`https://www.cfmem.com/feeds/posts/default?alt=rss`);
@@ -17,7 +17,7 @@ async function fetch_rss() {
 async function fetch_yaml(link) {
   const response = await fetch(link);
   const data = await response.text();
-  const yaml = YAML.load(data);
+  const yaml = readYaml(data);
   const { proxies } = yaml;
   return proxies;
 }
