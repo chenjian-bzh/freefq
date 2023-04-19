@@ -27,5 +27,5 @@ jobs:
         npm ci
         npm run build
         git add .
-        git commit -m "update by github action"
-        git push
+        git commit -am "update by github action"
+        git push || exit 0
