@@ -1,13 +1,6 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const YAML = require("js-yaml");
-
-console.log(1);
-
-const { writeFile } = fs.promises;
-const writeYaml = (filename, obj) =>
-  writeFile(filename, YAML.dump(obj));
+const { writeYaml } = require('../lib/util');
 
 async function fetch_rss() {
   const response = await fetch(`https://www.cfmem.com/feeds/posts/default?alt=rss`);
@@ -32,8 +25,7 @@ async function fetch_yaml(link) {
 
 ; (async () => {
   const links = await fetch_rss();
-  console.log(links);
   const [latest] = links;
   const proxies = await fetch_yaml(latest);
-  await writeYaml("./proxies/v2rayse.yaml", { proxies })
+  await writeYaml("./proxies/v2rayse.yaml", { proxies });
 })();
