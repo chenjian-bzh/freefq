@@ -1,8 +1,6 @@
 // https://github.com/freefq/free
 // https://raw.fastgit.org/freefq/free/master/v2
 
-const { parse } = require("url");
-
 async function fetch_links() {
   const response = await fetch(`https://raw.fastgit.org/freefq/free/master/v2`);
   const data = await response.text();
