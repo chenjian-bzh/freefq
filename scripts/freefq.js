@@ -72,6 +72,9 @@ const convert2clash = vmess => {
   output[opts] = output[opts] || {};
   if (vmess.host) {
     output[opts]["host"] = vmess.host;
+    output[opts]["headers"] = {
+      "host": vmess.host,
+    }
   }
   if (vmess.path) {
     output[opts]["path"] = vmess.path;
