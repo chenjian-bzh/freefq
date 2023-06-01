@@ -10,6 +10,13 @@ proxies:
     tls: false
     skip-cert-verify: true
     tcp-opts: {}
+  - name: github.com/freefq - 辽宁省鞍山市电信 1
+    type: ss
+    server: free.themars.top
+    port: '32102'
+    password: >-
+      Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiODliMzljMi1kYzhkLTQ1OTUtYTRjNS01NGI0ZmJhYjNmYzI
+    udp: true
   - type: vmess
     name: github.com/freefq - 美国  2
     server: armus.114514782.xyz
@@ -333,6 +340,12 @@ proxies:
       headers:
         host: in.sharecentrepro.com
       path: /shirker
+  - name: github.com/freefq - 浙江省嘉兴市电信IDC机房 27
+    type: ss
+    server: gzdx.jcnode.top
+    port: '23001'
+    password: YWVzLTI1Ni1nY206MDUyYmM3NjktMDQ4OS00OWM3LTk3ZjItNTFiM2JiOGU1NDg2
+    udp: true
   - type: vmess
     name: github.com/freefq - 美国CloudFlare公司CDN节点 28
     server: 104.16.22.196

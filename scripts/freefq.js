@@ -117,6 +117,19 @@ registerHandler('trojan', data => {
   };
 });
 
+registerHandler('ss', data => {
+  const [ cipher, password ] = Buffer.from(data.auth, 'base64').toString().split(':');
+  return {
+    name: data.hash,
+    type: data.protocol,
+    server: data.host,
+    port: data.port,
+    cipher,
+    password,
+    udp: true,
+  };
+})
+
 async function main() {
   const links = await fetch_links();
   const proxies = links.map(parse_link).filter(Boolean);
