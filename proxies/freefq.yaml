@@ -14,8 +14,8 @@ proxies:
     type: ss
     server: free.themars.top
     port: '32102'
-    password: >-
-      Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpiODliMzljMi1kYzhkLTQ1OTUtYTRjNS01NGI0ZmJhYjNmYzI
+    cipher: chacha20-ietf-poly1305
+    password: b89b39c2-dc8d-4595-a4c5-54b4fbab3fc2
     udp: true
   - type: vmess
     name: github.com/freefq - 美国  2
@@ -344,7 +344,8 @@ proxies:
     type: ss
     server: gzdx.jcnode.top
     port: '23001'
-    password: YWVzLTI1Ni1nY206MDUyYmM3NjktMDQ4OS00OWM3LTk3ZjItNTFiM2JiOGU1NDg2
+    cipher: aes-256-gcm
+    password: 052bc769-0489-49c7-97f2-51b3bb8e5486
     udp: true
   - type: vmess
     name: github.com/freefq - 美国CloudFlare公司CDN节点 28

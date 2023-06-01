@@ -34,6 +34,6 @@ async function fetch_yaml(link) {
   const links = await fetch_rss();
   console.log(links);
   const [latest] = links;
-  // const proxies = await fetch_yaml(latest);
-  // await writeYaml("./proxies/v2rayse.yaml", { proxies });
+  const proxies = await fetch_yaml(latest);
+  await writeYaml("./proxies/v2rayse.yaml", { proxies });
 })();
