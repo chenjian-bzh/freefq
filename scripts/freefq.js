@@ -1,11 +1,27 @@
 #!/usr/bin/env node
 
 const fs = require("fs");
+const url = require('url');
 const YAML = require("js-yaml");
 
 const { writeFile } = fs.promises;
 const writeYaml = (filename, obj) =>
   writeFile(filename, YAML.dump(obj));
+
+function parseURL(url) {
+  const pattern = /^((\w+):\/\/)?((.+)?@)?([^\/\?:]+):?(\d+)?(\/?[^\?#]+)?\??([^#]+)?#?(.*)/;
+  const match = pattern.exec(decodeURIComponent(url));
+  return Object.entries({
+    url: 0,
+    protocol: 2,
+    auth: 4,
+    host: 5,
+    port: 6,
+    path: 7,
+    querystring: 8,
+    hash: 9,
+  }).reduce((out, [k, v]) => (out[k] = match[v] || '', out), {});
+}
 
 // https://github.com/freefq/free
 // https://raw.fastgit.org/freefq/free/master/v2
@@ -16,21 +32,17 @@ async function fetch_links() {
   return Buffer
     .from(data, "base64")
     .toString()
-    .split(/\n/g)
+    .split(/\r?\n/)
     .filter(Boolean);
 }
 
-function split_link(link) {
-  const [proto, data] = link.split("://");
-  return [proto, Buffer.from(data, "base64").toString()];
-}
 
 function parse_link(link) {
-  const [proto, data] = split_link(link);
-  if (proto in handlers) {
-    return handlers[proto](data);
+  const u = parseURL(link);
+  if (u.protocol in handlers) {
+    return handlers[u.protocol](u);
   } else {
-    console.log(`Unknown protocol: ${proto}`);
+    console.log(`Unknown protocol: ${u.protocol}`);
   }
 }
 
@@ -89,12 +101,20 @@ const registerHandler = (proto, handler) => {
 };
 
 registerHandler('vmess', data => {
-  const vmess = JSON.parse(data);
-  return convert2clash(vmess)
+  const vmess = JSON.parse(Buffer.from(data.host, 'base64'));
+  return convert2clash(vmess);
 });
 
-registerHandler('trojan', (data) => {
-  // console.log(data);
+registerHandler('trojan', data => {
+  return {
+    name: data.hash,
+    type: data.protocol,
+    server: data.host,
+    port: data.port,
+    password: data.auth,
+    'skip-cert-verify': true,
+    alpn: [ "h2", "http/1.1" ]
+  };
 });
 
 async function main() {

@@ -12,7 +12,7 @@ const readYaml = data => YAML.load(data);
 async function fetch_rss() {
   const response = await fetch(`https://www.cfmem.com/feeds/posts/default?alt=rss`);
   const rss = await response.text();
-  const r1 = /clash订阅链接：(https?.+?)(?:&lt;)/g;
+  const r1 = /clash订阅链接：.*?(https:\/\/[^<>\s]+\.yaml)/;
   var tmp, result = [];
   while (tmp = r1.exec(rss)) {
     const [, link] = tmp;
@@ -32,7 +32,8 @@ async function fetch_yaml(link) {
 
 ; (async () => {
   const links = await fetch_rss();
+  console.log(links);
   const [latest] = links;
-  const proxies = await fetch_yaml(latest);
-  await writeYaml("./proxies/v2rayse.yaml", { proxies });
+  // const proxies = await fetch_yaml(latest);
+  // await writeYaml("./proxies/v2rayse.yaml", { proxies });
 })();
