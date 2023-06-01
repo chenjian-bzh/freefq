@@ -12,13 +12,8 @@ const readYaml = data => YAML.load(data);
 async function fetch_rss() {
   const response = await fetch(`https://www.cfmem.com/feeds/posts/default?alt=rss`);
   const rss = await response.text();
-  const r1 = /clash订阅链接：.*?(https:\/\/[^<>\s]+\.yaml)/;
-  var tmp, result = [];
-  while (tmp = r1.exec(rss)) {
-    const [, link] = tmp;
-    result.push(link)
-  }
-  return result;
+  const r1 = /(https:\/\/[^<>\s]+\.yaml)/g;
+  return rss.match(r1);
 }
 
 async function fetch_yaml(link) {
