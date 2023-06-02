@@ -4,7 +4,7 @@
   "description": "Update Hourly.",
   "main": "main.js",
   "scripts": {
-    "build": "./run.sh"
+    "build": "./run.js"
   },
   "keywords": [],
   "author": "",
