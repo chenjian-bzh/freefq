@@ -132,7 +132,7 @@ registerHandler('ss', data => {
 
 async function main() {
   const links = await fetch_links();
-  const proxies = links.map(parse_link).filter(Boolean);
+  const proxies = links.map(parse_link).filter(x => !x.name.includes("更新"));
   await writeYaml('./proxies/freefq.yaml', { proxies });
 }
 

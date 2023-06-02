@@ -14,7 +14,7 @@ async function fetch_yaml(link) {
   const data = await response.text();
   const yaml = readYaml(data);
   const { proxies } = yaml;
-  return proxies;
+  return proxies.filter(x => !x.name.includes("有效期"));
 }
 
 
