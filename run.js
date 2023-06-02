@@ -9,7 +9,7 @@ const writeYaml = (filename, obj) =>
   writeFile(filename, YAML.dump(obj));
 
 function parseURL(url) {
-  const pattern = /^((\w+):\/\/)?((.+)?@)?([^\/\?:]+):?(\d+)?(\/?[^\?#]+)?\??([^#]+)?#?(.*)/;
+  const pattern = /^((\w+):\/\/)?((\S+)?@)?([^\/\?:]+):?(\d+)?(\/?[^\?#]+)?\??([^#]+)?#?(.*)/;
   const match = pattern.exec(decodeURIComponent(url));
   return Object.entries({
     url: 0,
@@ -29,7 +29,7 @@ const registerHandler = (proto, handler) => {
   handlers[proto] = handler
 };
 
-registerHandler('vmess', data => {
+registerHandler('vmess', (data, link) => {
   const vmess = JSON.parse(Buffer.from(data, 'base64'));
   const output = {
     type: "vmess",
@@ -65,6 +65,7 @@ registerHandler('vmess', data => {
 
 registerHandler('trojan', (_, link) => {
   const data = parseURL(link);
+  console.log(link, data);
   return {
     name: data.hash,
     type: data.protocol,

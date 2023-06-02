@@ -1,6 +1,8 @@
 name: Generate Proxy and Rules for Clash
 
 on:
+  push:
+    branches: [ "master" ]
   workflow_dispatch:
   schedule:
     - cron: "10 */2 * * *"
