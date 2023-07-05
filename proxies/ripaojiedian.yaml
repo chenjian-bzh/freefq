@@ -1,0 +1,222 @@
+proxies:
+  - name: ''
+    type: ss
+    server: ripaojiedian
+    port: ''
+    cipher: aes-128-gcm
+    password: 83XvX4Vo%*3a�^��_7ێ|ҙn�)
+    udp: true
+  - name: ''
+    type: ss
+    server: ripaojiedian
+    port: ''
+    cipher: chacha20-ietf-poly1305
+    password: 9e44e9ffe5c25�}{�}��N8ޙn�)
+    udp: true
+  - name: ''
+    type: ssr
+    server: >-
+      aWVwbC16aC5zYWZldGVsZXNjb3BlLmNjOjExODA0OmF1dGhfYWVzMTI4X21kNTphZXMtMjU2LWNmYjp0bHMxLjJfdGlja2V0X2F1dGg6YUVkclVUWTVNVFYwUkEvP29iZnNwYXJhbT1ZV3BoZUM1dGFXTnliM052Wm5RdVkyOXQmcHJvdG9wYXJhbT1NVEkwTURBMk9rcEVPVTAzYW1GM1p6ZyZyZW1hcmtzPTZhYVo1cml2NWJDUDU0R3I1NjZ0ZkVCeWFYQmhiMnBwWldScFlXNA
+    port: ''
+    cipher: ''
+    udp: true
+  - type: vmess
+    name: 日本A|@ripaojiedian
+    server: 52.198.134.70
+    port: '8080'
+    uuid: 35341994-626f-4227-acd3-c7305ac021f1
+    alterId: '1'
+    cipher: auto
+    network: ws
+    tls: false
+    skip-cert-verify: true
+    ws-opts:
+      path: /download
+  - name: ''
+    type: ss
+    server: ripaojiedian
+    port: ''
+    cipher: chacha20-ietf-poly1305
+    password: 7b5279e7-284d-4b14-9858-4b928a410af7#�ɫ��'�~|��
+    udp: true
+  - type: vmess
+    name: 移动专线|@ripaojiedian
+    server: 120.233.43.29
+    port: '53173'
+    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+    alterId: '64'
+    cipher: auto
+    network: tcp
+    tls: false
+    skip-cert-verify: true
+    tcp-opts:
+      path: /
+  - name: ''
+    type: trojan
+    server: ripaojiedian
+    port: ''
+    password: >-
+      db7a325b-b2a2-4217-af2c-1e2bfdc8d71c@kr5.microsoft-orgwly.vip:10023/?type=tcp&security=tls&sni=tls.microsoft-orgwly.vip&allowInsecure=1#韩国|
+    skip-cert-verify: true
+    alpn:
+      - h2
+      - http/1.1
+  - name: ''
+    type: trojan
+    server: ripaojiedian
+    port: ''
+    password: >-
+      c718e55f-2fbb-4940-b9e3-d66ce3381e21@spjp.1234567890spcloud.com:443/?type=tcp&security=tls&sni=spjp.1234567890spcloud.com&allowInsecure=1#日本东京|
+    skip-cert-verify: true
+    alpn:
+      - h2
+      - http/1.1
+  - type: vmess
+    name: 香港|tg频道:@ripaojiedian
+    server: shck8bq.olb8qsg.top
+    port: '47104'
+    uuid: f149ceba-8c2d-4eee-931b-de7292013395
+    alterId: '0'
+    cipher: auto
+    network: ws
+    tls: false
+    skip-cert-verify: true
+    ws-opts:
+      path: /
+  - name: ''
+    type: trojan
+    server: ripaojiedian
+    port: ''
+    password: >-
+      7b451425-93d7-39a2-977f-b07e540562af@gd-cm.32jr.com:51766/?type=tcp&security=tls&sni=riben1.veepien.me&allowInsecure=1#日本|tg频道:
+    skip-cert-verify: true
+    alpn:
+      - h2
+      - http/1.1
+  - type: vmess
+    name: 日本B|@ripaojiedian
+    server: 29.kccic2pa.xyz
+    port: '50029'
+    uuid: 1c949f71-c7de-45cc-ba77-8f633eb77cdd
+    alterId: '0'
+    cipher: auto
+    network: tcp
+    tls: false
+    skip-cert-verify: true
+    tcp-opts:
+      path: /
+  - name: ''
+    type: trojan
+    server: ripaojiedian
+    port: ''
+    password: >-
+      31395807-8129-4dbb-90ee-cf27e165a0ff@163.123.192.60:443/?type=tcp&security=tls&sni=download.xn--mes358aby2apfg.com&allowInsecure=1#美国A|
+    skip-cert-verify: true
+    alpn:
+      - h2
+      - http/1.1
+  - name: ''
+    type: ss
+    server: ripaojiedian
+    port: ''
+    cipher: chacha20-ietf-poly1305
+    password: "2323df49-abb4-46bd-b8f2-33c4931284e33�'a�蝫\ai~�\x1A��)ߝ}��"
+    udp: true
+  - type: vmess
+    name: 新加坡|@ripaojiedian
+    server: 26.kccic2pa.xyz
+    port: '50026'
+    uuid: 1c949f71-c7de-45cc-ba77-8f633eb77cdd
+    alterId: '0'
+    cipher: auto
+    network: tcp
+    tls: false
+    skip-cert-verify: true
+    tcp-opts:
+      path: /
+  - type: vmess
+    name: 电报频道:@ripaojiedian
+    server: 156.225.67.249
+    port: '44443'
+    uuid: 84d1de11-ce12-4a15-8312-1338356d4ac4
+    alterId: '64'
+    cipher: auto
+    network: tcp
+    tls: false
+    skip-cert-verify: true
+    tcp-opts:
+      path: /
+  - type: vmess
+    name: 美国2|@ripaojiedian
+    server: 142.4.110.24
+    port: '52908'
+    uuid: 418048af-a293-4b99-9b0c-98ca3580dd24
+    alterId: '64'
+    cipher: auto
+    network: tcp
+    tls: false
+    skip-cert-verify: true
+    tcp-opts:
+      path: /
+  - name: ''
+    type: trojan
+    server: ripaojiedian
+    port: ''
+    password: >-
+      d906afe5-7c3c-4ddc-aaa4-61c154a82e5e@152.70.74.66:443/?type=tcp&security=tls&sni=152.70.74.66&allowInsecure=1#印度|
+    skip-cert-verify: true
+    alpn:
+      - h2
+      - http/1.1
+  - type: vmess
+    name: 美国1|@ripaojiedian
+    server: 129.146.247.135
+    port: '32561'
+    uuid: c24b6170-ba54-4b2b-92a7-c04740bfc7bf
+    alterId: '0'
+    cipher: auto
+    network: tcp
+    tls: false
+    skip-cert-verify: true
+    tcp-opts:
+      path: /
+  - type: vmess
+    name: 不要恶意刷流量
+    server: you.are.sb
+    port: '31235'
+    uuid: 2857b72b-5339-3c3c-987c-060f6720e377
+    alterId: '0'
+    cipher: auto
+    network: ws
+    tls: false
+    skip-cert-verify: true
+    ws-opts:
+      path: /maohk3
+  - name: ''
+    type: ss
+    server: ripaojiedian
+    port: ''
+    cipher: aes-256-cfb
+    password: amazonskr055�nt�u��
+    udp: true
+  - name: ''
+    type: ss
+    server: ripaojiedian
+    port: ''
+    cipher: aes-256-cfb
+    password: amazonskr058�m6�}xߎ7
+    udp: true
+  - name: ''
+    type: ss
+    server: ripaojiedian
+    port: ''
+    cipher: aes-256-cfb
+    password: amazonskr055�^��n��7
+    udp: true
+  - name: ''
+    type: ss
+    server: ripaojiedian
+    port: ''
+    cipher: aes-256-cfb
+    password: amazonskr059�^��}zێ7
+    udp: true
